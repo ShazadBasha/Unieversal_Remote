@@ -18,15 +18,10 @@ VCC (3.3V)	IR LED positive supply (via transistor control)
 
 ✅ Optional: Normal LED Test
 If testing with normal visible LED:
-
 Anode to D2 (GPIO4) via 220Ω resistor
-
 Cathode to GND
 
 📸 Visual Layout Summary:
-csharp
-Copy
-Edit
 [ESP8266 D5 (GPIO14)] ← TSOP OUT
 [ESP8266 3.3V] ← TSOP VCC
 [ESP8266 GND] ← TSOP GND
@@ -35,5 +30,7 @@ Edit
 [NPN Collector] → IR LED Anode  
 [IR LED Cathode] → GND  
 [NPN Emitter] → GND
+
+
 ✅ This matches perfectly with the code in your ac_ir_control canvas.
 Upload that sketch, wire it like above, open Serial Monitor at 115200 baud — and you’re good to capture + re-transmit IR signals!
