@@ -1,0 +1,39 @@
+📌 ESP8266 AC IR Reception + Transmission Wiring
+✅ IR Receiver: TSOP1738
+(For receiving signals from your AC remote)
+
+TSOP1738 Pin	Connect to ESP8266
+OUT (leftmost)	D5 (GPIO14)
+GND (middle)	GND
+VCC (rightmost)	3.3V
+
+✅ IR Transmitter: IR LED (with NPN transistor driver — recommended)
+IR LED via BC547 or 2N2222 NPN Transistor (safer, stronger drive)
+Component	Connection
+IR LED Anode (+)	Collector of NPN transistor
+IR LED Cathode (-)	GND
+Emitter of NPN transistor	GND
+Base of NPN transistor	Via 100Ω resistor to D2 (GPIO4)
+VCC (3.3V)	IR LED positive supply (via transistor control)
+
+✅ Optional: Normal LED Test
+If testing with normal visible LED:
+
+Anode to D2 (GPIO4) via 220Ω resistor
+
+Cathode to GND
+
+📸 Visual Layout Summary:
+csharp
+Copy
+Edit
+[ESP8266 D5 (GPIO14)] ← TSOP OUT
+[ESP8266 3.3V] ← TSOP VCC
+[ESP8266 GND] ← TSOP GND
+
+[ESP8266 D2 (GPIO4)] → 100Ω → NPN Base  
+[NPN Collector] → IR LED Anode  
+[IR LED Cathode] → GND  
+[NPN Emitter] → GND
+✅ This matches perfectly with the code in your ac_ir_control canvas.
+Upload that sketch, wire it like above, open Serial Monitor at 115200 baud — and you’re good to capture + re-transmit IR signals!
